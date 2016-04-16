@@ -4,4 +4,4 @@ all: Factorial.swift
 
 .PHONY: clean
 clean:
-	rm *.dSYM
+	rm Factorial
