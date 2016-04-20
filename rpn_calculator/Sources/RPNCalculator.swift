@@ -5,26 +5,6 @@
 struct RPNCalculator {
   private var stack = [Double]()
 
-  private func tokenizeInput(input : String) -> [String] {
-    var tokens = [String]()
-    var newString : String = ""
-
-    for inputToken in input.characters {
-      if inputToken == " " {
-        tokens.append(newString)
-        newString = ""
-      } else {
-        newString.append(inputToken)
-      }
-    }
-
-    if newString != "" {
-        tokens.append(newString)
-    }
-
-    return tokens
-  }
-
   private mutating func performOperation(operation : String) {
     guard stack.count > 1 else {
       print("Not enough values for \(operation)")
@@ -48,13 +28,8 @@ struct RPNCalculator {
     }
   }
   
-  mutating func calculateInput(input : String) -> Double {
-      // No componentsSeparatedByString in this version
-      //let separatedInput : [String] = input.componentsSeparatedByString(" ") 
-
-      let separatedInput : [String] = tokenizeInput(input)
-
-      for inputToken in separatedInput {
+  mutating func calculateInput(input : [String]) -> Double {
+      for inputToken in input {
         if inputToken == "+" || inputToken == "-" || 
            inputToken == "*" || inputToken == "/" {
           performOperation(inputToken)
