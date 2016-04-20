@@ -1,4 +1,9 @@
 func sieveOfEratothenes(value : Int) {
+  guard value >= 2 else {
+    print("The input of \(value) must be 2 or greater")
+    return
+  }
+
   // The Sieve algorithm starts at 2
   var sieveArray = Array(2...value)
 
@@ -29,4 +34,6 @@ var input : String?
 input = readLine(stripNewline: true)
 if let inputString = input, let inputValue = Int(inputString) {
   sieveOfEratothenes(inputValue)
+} else {
+  print("Input could not be converted to an integer for the prime number search.")
 }
